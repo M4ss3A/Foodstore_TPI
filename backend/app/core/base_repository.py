@@ -1,16 +1,11 @@
-"""
-Repositorio base generico: operaciones comunes a todas las entidades.
-
-Cada modulo hereda de BaseRepository[Modelo] y agrega sus consultas propias.
-Los repositorios no tienen reglas de negocio ni hacen commit.
-"""
-
 from typing import Generic, TypeVar
 
 from sqlmodel import Session, SQLModel, select
 
 T = TypeVar("T", bound=SQLModel)
 
+
+# repo generico
 class BaseRepository(Generic[T]):
     def __init__(self, model: type[T], session: Session) -> None:
         self.model = model
@@ -24,7 +19,7 @@ class BaseRepository(Generic[T]):
 
     def add(self, entity: T) -> T:
         self.session.add(entity)
-        self.session.flush()  # flush (no commit)
+        self.session.flush()  # flush y no commit, el commit lo hace el UoW
         self.session.refresh(entity)
         return entity
 
