@@ -30,8 +30,10 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-stone-200 bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-2 px-4 py-3">
-        <Link to="/" className="mr-4 text-xl font-bold text-orange-600">
-          🍕 Food Store
+                {/* logo + nombre */}
+        <Link to="/" className="mr-4 flex items-center gap-2 text-xl font-bold text-orange-600">
+          <img src="/img/logo.jpg" alt="Logo AM Food Store" className="h-9 w-9 rounded-lg object-cover" />
+          Food Store
         </Link>
 
         <nav className="flex flex-wrap items-center gap-1">
